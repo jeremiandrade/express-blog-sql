@@ -77,3 +77,9 @@ app.delete('/posts/:id', destroy);
 
 
 
+// query
+
+// SELECT posts.title, posts.content, posts.image, tags.label,tags.id
+// FROM `post_tag`
+// JOIN `posts` ON `post_tag`.`post_id`= `posts`.`id` 
+// JOIN `tags` ON `post_tag`.`tag_id`= `tags`.`id`
