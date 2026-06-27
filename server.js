@@ -65,11 +65,15 @@ app.get('/posts/:id', show);
 const destroy = (req, res) => {
 
     //recupero l'id 
-    const { id } = req.params
-    // elimino elemento 
-
-
+    const id = req.params.id
+    // elimino elemento dalla lista
+    connection.query('DELETE FROM posts WHERE id = ?', [id], (err) => {
+        if (err) return res.status(500).json({ error: 'Failed to delete post' })
+        res.sendStatus(204)
+    })
 }
+
+app.delete('/posts/:id', destroy);
 
 
 
